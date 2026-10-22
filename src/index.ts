@@ -4,6 +4,7 @@ import cors from 'cors';
 import { AppDataSource } from './config/data-source';
 import { userRoutes } from './routes/userRoutes';
 import { taskRoutes } from './routes/taskRoutes';
+import { commentRoutes } from './routes/commentRoutes';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -27,6 +28,7 @@ app.get('/health', (req, res) => {
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api', taskRoutes);
+app.use('/api', commentRoutes);
 
 // 404 handler (Must be placed AFTER all valid routes)
 app.use((req, res) => {

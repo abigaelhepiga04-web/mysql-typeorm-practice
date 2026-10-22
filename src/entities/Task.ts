@@ -6,9 +6,11 @@ import {
    UpdateDateColumn,
    ManyToOne,
    JoinColumn,
-   Index
+   Index,
+   OneToMany
 } from 'typeorm';
 import { User } from './User';
+import { Comment } from './Comment'
 
 
 @Entity('tasks')
@@ -62,4 +64,9 @@ export class Task {
 
    @UpdateDateColumn()
    updatedAt!: Date;
+
+   @OneToMany(() => Comment, comment => comment.task, { cascade: true })
+   comments!: Comment[];
+
 }
+
